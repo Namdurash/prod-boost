@@ -6,4 +6,7 @@ export const COLORS = {
   pureWhite: '#FFFFFF', // primary button text
   paleMint: '#E5F5F1', // secondary button background
   black: '#000000',
+  teal: '#198c78', // neumorphic background
+  neumorphicShadowLight: 'rgba(255, 255, 255, 0.35)',
+  neumorphicShadowDark: 'rgba(0, 0, 0, 0.28)',
 };

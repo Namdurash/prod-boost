@@ -1,15 +1,15 @@
-import { RouteProp } from '@react-navigation/native';
 import { Text, View } from 'react-native';
-import { MainStackParamsList } from '../../navigation/navigators/MainNavigator/MainNavigator.types';
-import { TextInput } from '../../components/TextInput/TextInput';
-import { NeomorphButton } from '../../components/NeomorphButton/NeomorphButton';
-import { styles } from './EditTaskScreen.styles';
+
+import { NeomorphButton } from '@app/components/NeomorphButton/NeomorphButton';
+import { TextInput } from '@app/components/TextInput/TextInput';
+
 import { useEditTaskScreen } from './EditTaskScreen.hooks';
+import { styles } from './EditTaskScreen.styles';
+
+import type { EditTaskScreenProps } from './types';
 
 export const EditTaskScreen = ({ route }: EditTaskScreenProps) => {
-  const { control, onSubmit } = useEditTaskScreen(route.params?.item);
-
-  console.log(route.params?.item);
+  const { control, onSubmit } = useEditTaskScreen(route.params.item);
 
   return (
     <View style={styles.container}>
@@ -17,7 +17,7 @@ export const EditTaskScreen = ({ route }: EditTaskScreenProps) => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          defaultValue={route.params?.item.title}
+          defaultValue={route.params.item.title}
           control={control}
           name="taskTitle"
           rules={{ required: true }}
@@ -27,7 +27,7 @@ export const EditTaskScreen = ({ route }: EditTaskScreenProps) => {
 
       <View style={styles.inputContainer}>
         <TextInput
-          defaultValue={route.params?.item.rewardTokens}
+          defaultValue={route.params.item.rewardTokens}
           keyboardType="number-pad"
           control={control}
           name="tokensEarn"
@@ -36,11 +36,11 @@ export const EditTaskScreen = ({ route }: EditTaskScreenProps) => {
         />
       </View>
 
-      <NeomorphButton text="End Edit" onPress={onSubmit} style={styles.button} />
+      <NeomorphButton
+        text="End Edit"
+        onPress={onSubmit}
+        style={styles.button}
+      />
     </View>
   );
 };
-
-export interface EditTaskScreenProps {
-  route: RouteProp<MainStackParamsList>;
-}

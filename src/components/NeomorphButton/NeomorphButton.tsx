@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-require-imports */
 import {
   Canvas,
   Group,
@@ -5,14 +6,12 @@ import {
   Shadow,
   Text as SkiaText,
   useFont,
-} from "@shopify/react-native-skia";
-import {
-  TouchableOpacity,
-  type StyleProp,
-  type ViewStyle,
-} from "react-native";
-import { COLORS } from "../../constants/Colors";
+} from '@shopify/react-native-skia';
+import { TouchableOpacity } from 'react-native';
 
+import { COLORS } from '@app/constants/Colors';
+
+import type { NeomorphButtonProps } from './types';
 
 export const NeomorphButton = ({
   text,
@@ -21,14 +20,14 @@ export const NeomorphButton = ({
   fontSize = 20,
   paddingHorizontal = 32,
   paddingVertical = 16,
-  backgroundColor = "#198c78",
+  backgroundColor = COLORS.teal,
   shadowBlur = 5,
   shadowOffset = 2,
   shadowPadding,
 }: NeomorphButtonProps) => {
   const font = useFont(
-    require("../../assets/fonts/Funnel_Sans/static/FunnelSans-Regular.ttf"),
-    fontSize
+    require('../../assets/fonts/Funnel_Sans/static/FunnelSans-Regular.ttf'),
+    fontSize,
   );
 
   if (!font) {
@@ -60,13 +59,13 @@ export const NeomorphButton = ({
             dx={-shadowOffset}
             dy={-shadowOffset}
             blur={shadowBlur}
-            color="rgba(255, 255, 255, 0.35)"
+            color={COLORS.neumorphicShadowLight}
           />
           <Shadow
             dx={shadowOffset}
             dy={shadowOffset}
             blur={shadowBlur}
-            color="rgba(0, 0, 0, 0.28)"
+            color={COLORS.neumorphicShadowDark}
           />
 
           <RoundedRect
@@ -90,16 +89,3 @@ export const NeomorphButton = ({
     </TouchableOpacity>
   );
 };
-
-export interface NeomorphButtonProps {
-  text: string;
-  onPress?: () => void;
-  style?: StyleProp<ViewStyle>;
-  fontSize?: number;
-  paddingHorizontal?: number;
-  paddingVertical?: number;
-  backgroundColor?: string;
-  shadowBlur?: number;
-  shadowOffset?: number;
-  shadowPadding?: number;
-}

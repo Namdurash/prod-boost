@@ -1,4 +1,4 @@
 export const TableNames = {
   USER_TABLE: 'USERS',
-  TASKS_TABLE: 'TASKS'
-}
+  TASKS_TABLE: 'TASKS',
+};

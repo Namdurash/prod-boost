@@ -1,7 +1,9 @@
 import { useForm } from 'react-hook-form';
-import { queryExecutor } from '../../managers/QueryManager';
-import { TableNames } from '../../constants/TableNames';
-import { TaskModel } from '../../models/TasksModel';
+
+import { TableNames } from '@app/constants/TableNames';
+import { queryExecutor } from '@app/managers/QueryManager';
+
+import type { TaskModel } from '@app/models/TasksModel';
 
 export interface CreateTaskInputs {
   taskTitle: string;
@@ -9,10 +11,12 @@ export interface CreateTaskInputs {
 }
 
 export const useHandleForm = () => {
-  const { control, handleSubmit } = useForm<CreateTaskInputs>({ defaultValues: { taskTitle: '', tokensEarn: 0 } });
+  const { control, handleSubmit } = useForm<CreateTaskInputs>({
+    defaultValues: { taskTitle: '', tokensEarn: 0 },
+  });
 
   const onSubmit = () => {
-    handleSubmit(async (data) => {
+    handleSubmit(async data => {
       try {
         await queryExecutor.insert<TaskModel>(TableNames.TASKS_TABLE, {
           title: data.taskTitle,

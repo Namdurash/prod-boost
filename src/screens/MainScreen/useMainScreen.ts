@@ -1,21 +1,29 @@
-import { useCallback, useEffect, useState } from 'react';
-import { QueryManager } from '../../managers/QueryManager';
-import { TableNames } from '../../constants/TableNames';
-import { TaskModel } from '../../models/TasksModel';
 import { useNavigation } from '@react-navigation/native';
-import { MainNavigation } from '../../navigation/navigators/MainNavigator/MainNavigator.types';
-import { CREATE_TASK_SCREEN } from '../../navigation/paths';
-import { UserModel } from '../../models/UserModel';
-import { useUserStore } from '../../stores/UserStore/useUserStore';
+import { useCallback, useEffect, useState } from 'react';
 import { useShallow } from 'zustand/shallow';
+
+import { TableNames } from '@app/constants/TableNames';
+import { QueryManager } from '@app/managers/QueryManager';
+import { CREATE_TASK_SCREEN } from '@app/navigation/paths';
+import { useUserStore } from '@app/stores/UserStore/useUserStore';
+
+import type { TaskModel } from '@app/models/TasksModel';
+import type { UserModel } from '@app/models/UserModel';
+import type { MainNavigation } from '@app/navigation/navigators/MainNavigator/MainNavigator.types';
 
 const queryExecutor = new QueryManager();
 
 export const useMainScreen = () => {
   const [userTasks, setUserTasks] = useState<TaskModel[]>([]);
 
-  const { hydrateUser, increaseTotalTokens, decreaseTotalTokens, totalTokens, motivation } = useUserStore(
-    useShallow((state) => ({
+  const {
+    hydrateUser,
+    increaseTotalTokens,
+    decreaseTotalTokens,
+    totalTokens,
+    motivation,
+  } = useUserStore(
+    useShallow(state => ({
       hydrateUser: state.hydrateUser,
       increaseTotalTokens: state.increaseTotalTokens,
       decreaseTotalTokens: state.decreaseTotalTokens,
@@ -29,8 +37,17 @@ export const useMainScreen = () => {
   const changeUserTotalTokens = async (isDecrease: boolean) => {
     const newUserTotalTokens = isDecrease ? totalTokens - 1 : totalTokens + 1;
     try {
-      await queryExecutor.update<UserModel>(TableNames.USER_TABLE, ['totalTokens'], [newUserTotalTokens], 'id=1');
-      isDecrease ? decreaseTotalTokens() : increaseTotalTokens();
+      await queryExecutor.update<UserModel>(
+        TableNames.USER_TABLE,
+        ['totalTokens'],
+        [newUserTotalTokens],
+        'id=1',
+      );
+      const changeTokensAmount = isDecrease
+        ? decreaseTotalTokens
+        : increaseTotalTokens;
+
+      changeTokensAmount();
     } catch {
       throw new Error('Error changing the number of total tokens');
     }

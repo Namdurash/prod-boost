@@ -1,6 +1,7 @@
-import { StyleSheet } from "react-native";
-import { FONTS } from "../../constants/Fonts";
-import { COLORS } from "../../constants/Colors";
+import { StyleSheet } from 'react-native';
+
+import { COLORS } from '@app/constants/Colors';
+import { FONTS } from '@app/constants/Fonts';
 
 export const styles = StyleSheet.create({
   container: {
@@ -12,7 +13,7 @@ export const styles = StyleSheet.create({
     fontFamily: FONTS.FunnelSans['600'],
     fontSize: 24,
     color: COLORS.mintWhite,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   totalTokensContainer: {
     alignItems: 'center',
@@ -27,7 +28,7 @@ export const styles = StyleSheet.create({
     fontFamily: FONTS.FunnelSans['400'],
     fontSize: 50,
     color: COLORS.mintWhite,
-    alignSelf: 'center'
+    alignSelf: 'center',
   },
   tasksHeading: {
     fontFamily: FONTS.FunnelSans['400'],
@@ -47,5 +48,5 @@ export const styles = StyleSheet.create({
   },
   taskListContainer: {
     gap: 8,
-  }
-})
+  },
+});

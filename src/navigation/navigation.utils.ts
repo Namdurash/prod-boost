@@ -1,4 +1,6 @@
-import { createNavigationContainerRef } from '@react-navigation/native'
-import { ApplicationStackParamsList } from './navigators/ApplicationNavigator/ApplicationNavigator.types'
+import { createNavigationContainerRef } from '@react-navigation/native';
 
-export const navigationRef = createNavigationContainerRef<ApplicationStackParamsList>()
+import type { ApplicationStackParamsList } from './navigators/ApplicationNavigator/ApplicationNavigator.types';
+
+export const navigationRef =
+  createNavigationContainerRef<ApplicationStackParamsList>();

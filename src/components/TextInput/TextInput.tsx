@@ -1,7 +1,13 @@
-import { Controller, ControllerProps, FieldPath, FieldValues } from 'react-hook-form';
-import { TextInput as RNTextInput, TextInputProps as RNTextInputProps } from 'react-native';
+import { Controller } from 'react-hook-form';
+import { TextInput as RNTextInput } from 'react-native';
 
-export const TextInput = <TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>>({
+import type { TextInputProps } from './types';
+import type { FieldPath, FieldValues } from 'react-hook-form';
+
+export const TextInput = <
+  TFieldValues extends FieldValues,
+  TName extends FieldPath<TFieldValues>,
+>({
   control,
   defaultValue,
   disabled = false,
@@ -17,16 +23,13 @@ export const TextInput = <TFieldValues extends FieldValues, TName extends FieldP
       defaultValue={defaultValue}
       disabled={disabled}
       render={({ field: { onChange, onBlur, value } }) => (
-        <RNTextInput onBlur={onBlur} onChangeText={onChange} value={value} {...props} />
+        <RNTextInput
+          onBlur={onBlur}
+          onChangeText={onChange}
+          value={value}
+          {...props}
+        />
       )}
     />
   );
 };
-
-type CleanRNProps = Omit<RNTextInputProps, 'defaultValue' | 'onChangeText' | 'value' | 'onBlur'>;
-
-export type TextInputProps<TFieldValues extends FieldValues, TName extends FieldPath<TFieldValues>> = Omit<
-  ControllerProps<TFieldValues, TName>,
-  'render'
-> &
-  CleanRNProps;

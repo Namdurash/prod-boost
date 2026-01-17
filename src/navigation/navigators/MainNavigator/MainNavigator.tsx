@@ -1,10 +1,14 @@
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import { MainScreen } from '../../../screens/MainScreen/MainScreen';
-import * as PATHS from '../../paths';
-import { CreateTaskScreen } from '../../../screens/CreateTaskScreen/CreateTaskScreen';
-import { EditTaskScreen } from '../../../screens/EditTaskScreen/EditTaskScreen';
 
-const { Navigator, Screen } = createNativeStackNavigator();
+import { CreateTaskScreen } from '@app/screens/CreateTaskScreen/CreateTaskScreen';
+import { EditTaskScreen } from '@app/screens/EditTaskScreen/EditTaskScreen';
+import { MainScreen } from '@app/screens/MainScreen/MainScreen';
+
+import * as PATHS from '../../paths';
+
+import type { MainStackParamsList } from './MainNavigator.types';
+
+const { Navigator, Screen } = createNativeStackNavigator<MainStackParamsList>();
 
 export const MainNavigator = () => {
   return (

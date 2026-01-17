@@ -17,4 +17,4 @@ export const FONTS = {
     700: 'Inter-Bold',
     800: 'Inter-ExtraBold',
   },
-}
+};

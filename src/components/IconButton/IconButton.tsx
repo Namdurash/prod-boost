@@ -1,15 +1,18 @@
-import React from "react"
-import { TouchableOpacity, TouchableOpacityProps } from "react-native"
-import { COLORS } from "../../constants/Colors"
+import React from 'react';
+import { TouchableOpacity } from 'react-native';
+
+import { styles } from './styles';
+
+import type { TouchableOpacityProps } from 'react-native';
 
 export const IconButton = ({ iconComponent, ...props }: IconButtonProps) => {
   return (
-    <TouchableOpacity {...props} style={{ backgroundColor: COLORS.deepTeal, borderRadius: 16, padding: 10 }}>
+    <TouchableOpacity {...props} style={styles.container}>
       {iconComponent}
     </TouchableOpacity>
-  )
-}
+  );
+};
 
 export interface IconButtonProps extends TouchableOpacityProps {
-  iconComponent: React.ReactNode
+  iconComponent: React.ReactNode;
 }
