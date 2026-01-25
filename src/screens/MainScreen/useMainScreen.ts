@@ -1,5 +1,5 @@
 import { useNavigation } from '@react-navigation/native';
-import { useCallback, useEffect, useState } from 'react';
+import { useState } from 'react';
 import { useShallow } from 'zustand/shallow';
 
 import { TableNames } from '@app/constants/TableNames';
@@ -16,21 +16,15 @@ const queryExecutor = new QueryManager();
 export const useMainScreen = () => {
   const [userTasks, setUserTasks] = useState<TaskModel[]>([]);
 
-  const {
-    hydrateUser,
-    increaseTotalTokens,
-    decreaseTotalTokens,
-    totalTokens,
-    motivation,
-  } = useUserStore(
-    useShallow(state => ({
-      hydrateUser: state.hydrateUser,
-      increaseTotalTokens: state.increaseTotalTokens,
-      decreaseTotalTokens: state.decreaseTotalTokens,
-      totalTokens: state.totalTokens,
-      motivation: state.motivation,
-    })),
-  );
+  const { increaseTotalTokens, decreaseTotalTokens, totalTokens, motivation } =
+    useUserStore(
+      useShallow(state => ({
+        increaseTotalTokens: state.increaseTotalTokens,
+        decreaseTotalTokens: state.decreaseTotalTokens,
+        totalTokens: state.totalTokens,
+        motivation: state.motivation,
+      })),
+    );
 
   const { navigate } = useNavigation<MainNavigation>();
 
@@ -82,26 +76,6 @@ export const useMainScreen = () => {
     }, []);
     setUserTasks(sortedTasksList);
   };
-
-  const setUserInitialData = useCallback(async () => {
-    try {
-      const { rows } = await queryExecutor.select<UserModel>({
-        tableName: TableNames.USER_TABLE,
-        valuesToSelect: ['totalTokens', 'name', 'motivation', 'timeSpent'],
-      });
-      hydrateUser(rows?.item(0) as unknown as UserModel);
-    } catch {
-      throw new Error('Error initializing user data');
-    }
-  }, [hydrateUser]);
-
-  // const insertUserMotivation = async () => {
-  //   await queryExecutor.insert(TableNames.USER_TABLE, ['name', 'motivation'], ['Funny User', 'Play video games'])
-  // }
-
-  useEffect(() => {
-    setUserInitialData();
-  }, [setUserInitialData]);
 
   return {
     changeUserTotalTokens,

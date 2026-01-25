@@ -22,6 +22,7 @@
 		1195F790D91642A498797B22 /* Inter_18pt-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 3F73FA2DB92749FE9DF064BD /* Inter_18pt-Black.ttf */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		17D054F4C06946199ECCB9E7 /* Inter_24pt-SemiBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = CFC6DB7FA20940F9AE016812 /* Inter_24pt-SemiBold.ttf */; };
+		1B4D0D13AFDF4C02AC12DAD8 /* Colors.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9C686CAC097F42C4979A7BE2 /* Colors.xcassets */; };
 		27D75C56A5A348A99DF786E0 /* Inter_24pt-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2F6239F36F5E4048A5B4B5EF /* Inter_24pt-Italic.ttf */; };
 		2A5ABC3482E44E4EA0BDCC4C /* Inter_18pt-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 854A0026BC684A4397B8115A /* Inter_18pt-ExtraLight.ttf */; };
 		2AA48926D22340D7B441A785 /* Inter_18pt-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BBBAF690A03F49F8ABD45756 /* Inter_18pt-Regular.ttf */; };
@@ -63,6 +64,7 @@
 		B5396B142BD8436A9F2B4327 /* Inter_24pt-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1E71020FF2EA4DCDB797C72E /* Inter_24pt-Black.ttf */; };
 		B834B8C6575645908BBFBA08 /* Inter_24pt-Thin.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BD211CBBF92D42F7A1A4DF27 /* Inter_24pt-Thin.ttf */; };
 		C077C6EE9FF144F2BFB57CF6 /* Inter_28pt-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BF4CDB9FD41C4025BC019C2C /* Inter_28pt-ExtraBoldItalic.ttf */; };
+		C175826B552E4BDA8A8B6D1F /* BootSplash.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 56AF7231215248008A64CB77 /* BootSplash.storyboard */; };
 		C2458CB56E1F45749CB63487 /* Inter_18pt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 978388DFBB334B3D80DC52C0 /* Inter_18pt-Light.ttf */; };
 		C5D4F57EF57D4D32A91CF5A8 /* Inter_28pt-ExtraLight.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0F37ACB81A854956A52B4655 /* Inter_28pt-ExtraLight.ttf */; };
 		CC7D0D9E96FD48CBBE097F97 /* Inter_28pt-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 73336E03C1BF4DA98FF20251 /* Inter_28pt-Light.ttf */; };
@@ -120,6 +122,7 @@
 		48F20837297F4D008FC8F800 /* Inter_18pt-BoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-BoldItalic.ttf"; path = "../src/assets/fonts/Inter/static/Inter_18pt-BoldItalic.ttf"; sourceTree = "<group>"; };
 		4A16EB6B2CFF4137B529F5DE /* Inter_28pt-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Bold.ttf"; path = "../src/assets/fonts/Inter/static/Inter_28pt-Bold.ttf"; sourceTree = "<group>"; };
 		52C6A2DF03224B04BF7EB530 /* FunnelSans-SemiBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FunnelSans-SemiBoldItalic.ttf"; path = "../src/assets/fonts/Funnel_Sans/static/FunnelSans-SemiBoldItalic.ttf"; sourceTree = "<group>"; };
+		56AF7231215248008A64CB77 /* BootSplash.storyboard */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = unknown; name = BootSplash.storyboard; path = ProdBoost/BootSplash.storyboard; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-ProdBoost.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ProdBoost.release.xcconfig"; path = "Target Support Files/Pods-ProdBoost/Pods-ProdBoost.release.xcconfig"; sourceTree = "<group>"; };
 		573E4BB3E544412CA9764169 /* Inter_28pt-ExtraLightItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ExtraLightItalic.ttf"; path = "../src/assets/fonts/Inter/static/Inter_28pt-ExtraLightItalic.ttf"; sourceTree = "<group>"; };
 		5B67A70116D5491EBE8B3855 /* FunnelSans-Regular.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FunnelSans-Regular.ttf"; path = "../src/assets/fonts/Funnel_Sans/static/FunnelSans-Regular.ttf"; sourceTree = "<group>"; };
@@ -140,6 +143,7 @@
 		85AAFB7FA9C44B3CBEBA0781 /* Inter_28pt-Thin.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-Thin.ttf"; path = "../src/assets/fonts/Inter/static/Inter_28pt-Thin.ttf"; sourceTree = "<group>"; };
 		8F1C0883B5DD4447BCE6A75F /* FunnelSans-MediumItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FunnelSans-MediumItalic.ttf"; path = "../src/assets/fonts/Funnel_Sans/static/FunnelSans-MediumItalic.ttf"; sourceTree = "<group>"; };
 		978388DFBB334B3D80DC52C0 /* Inter_18pt-Light.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_18pt-Light.ttf"; path = "../src/assets/fonts/Inter/static/Inter_18pt-Light.ttf"; sourceTree = "<group>"; };
+		9C686CAC097F42C4979A7BE2 /* Colors.xcassets */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = undefined; includeInIndex = 0; lastKnownFileType = folder.assetcatalog; name = Colors.xcassets; path = ProdBoost/Colors.xcassets; sourceTree = "<group>"; };
 		A24E4B074F3C4050B6D840B8 /* Inter_28pt-BlackItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-BlackItalic.ttf"; path = "../src/assets/fonts/Inter/static/Inter_28pt-BlackItalic.ttf"; sourceTree = "<group>"; };
 		A30E261F8D3B4129B1A1EA77 /* FunnelSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "FunnelSans-ExtraBoldItalic.ttf"; path = "../src/assets/fonts/Funnel_Sans/static/FunnelSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
 		AFCE675E69C64F14B7DA1354 /* Inter_28pt-ThinItalic.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "Inter_28pt-ThinItalic.ttf"; path = "../src/assets/fonts/Inter/static/Inter_28pt-ThinItalic.ttf"; sourceTree = "<group>"; };
@@ -270,6 +274,8 @@
 				13B07FB61A68108700A75B9A /* Info.plist */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB81A68108700A75B9A /* PrivacyInfo.xcprivacy */,
+				56AF7231215248008A64CB77 /* BootSplash.storyboard */,
+				9C686CAC097F42C4979A7BE2 /* Colors.xcassets */,
 			);
 			name = ProdBoost;
 			sourceTree = "<group>";
@@ -457,6 +463,8 @@
 				89D26583263248A49B95F40B /* Inter_28pt-ThinItalic.ttf in Resources */,
 				A7D867CFFBFF445D981590F1 /* OFL.txt in Resources */,
 				CCA4C80BE90F4DAAB7A35AC0 /* README.txt in Resources */,
+				C175826B552E4BDA8A8B6D1F /* BootSplash.storyboard in Resources */,
+				1B4D0D13AFDF4C02AC12DAD8 /* Colors.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

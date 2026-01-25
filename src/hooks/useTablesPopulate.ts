@@ -1,5 +1,3 @@
-import { useEffect } from 'react';
-
 import { AsyncStorageKeys } from '@app/constants/AsyncStorageKeys';
 import { TableNames } from '@app/constants/TableNames';
 import {
@@ -13,17 +11,20 @@ import { UserColumns } from '@app/models/UserModel';
 export const useTablesPopulate = () => {
   const queryExecutor = new QueryManager();
 
-  const createTables = async () => {
-    // make a batch
-    await queryExecutor.insert(TableNames.USER_TABLE, [
-      1,
-      'UserName',
-      'Play Video Games',
-      8,
-      0,
-    ]);
-    await queryExecutor.createTable(TableNames.USER_TABLE, UserColumns);
-    await queryExecutor.createTable(TableNames.TASKS_TABLE, TasksColumn);
+  const createTables = () => {
+    queryExecutor.createTable(TableNames.USER_TABLE, UserColumns);
+    queryExecutor.createTable(TableNames.TASKS_TABLE, TasksColumn);
+  };
+
+  const populateInitialUser = async () => {
+    // TODO: Remove hardcoded values when implementing user onboarding
+    await queryExecutor.insert(TableNames.USER_TABLE, {
+      id: 1,
+      name: 'UserName',
+      motivation: 'Play Video Games',
+      totalTokens: 8,
+      timeSpent: 0,
+    });
   };
 
   const verifyCreatedTables = async () => {
@@ -32,13 +33,12 @@ export const useTablesPopulate = () => {
     );
     if (!hasTablesCreated) {
       createTables();
+      await populateInitialUser();
       await setToStorage(AsyncStorageKeys.IS_TABLES_CREATED, true);
     }
   };
 
-  useEffect(() => {
-    verifyCreatedTables();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, []);
+  return {
+    verifyCreatedTables,
+  };
 };

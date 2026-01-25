@@ -1,11 +1,15 @@
 import { NavigationContainer } from '@react-navigation/native';
 
+import { WithSplashScreen } from '@app/compositions/WithSplashScreen/WithSplashScreen';
+
 import { MainNavigator } from './navigators/MainNavigator/MainNavigator';
 
 export const AppNavigation = () => {
   return (
-    <NavigationContainer>
-      <MainNavigator />
-    </NavigationContainer>
+    <WithSplashScreen>
+      <NavigationContainer>
+        <MainNavigator />
+      </NavigationContainer>
+    </WithSplashScreen>
   );
 };

@@ -11,7 +11,14 @@ const toDbValue = (v: SqlValue): string | number | null | ArrayBuffer => {
 };
 
 export class QueryManager {
-  createTable = async (tableName: string, tableColumns: string[]) => {
+  createTable = (tableName: string, tableColumns: string[]) => {
+    const db = getDB();
+    return db.execute(
+      `CREATE TABLE IF NOT EXISTS "${tableName}" (${tableColumns.join(',')});`,
+    );
+  };
+
+  createTableAsync = async (tableName: string, tableColumns: string[]) => {
     const db = getDB();
     return await db.executeAsync(
       `CREATE TABLE IF NOT EXISTS "${tableName}" (${tableColumns.join(',')});`,
