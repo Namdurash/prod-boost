@@ -1,4 +1,4 @@
-import { useCallback, useEffect } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 import BootSplash from 'react-native-bootsplash';
 
 import { TableNames } from '@app/constants/TableNames';
@@ -9,6 +9,7 @@ import { useUserStore } from '@app/stores/UserStore/useUserStore';
 import type { UserModel } from '@app/models/UserModel';
 
 export const useInitialize = () => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const { verifyCreatedTables } = useTablesPopulate();
   const hydrateUser = useUserStore(state => state.hydrateUser);
 
@@ -31,6 +32,7 @@ export const useInitialize = () => {
     } catch {
       throw new Error('Error hiding splash screen');
     } finally {
+      setIsInitialized(true);
       BootSplash.hide({ fade: true });
     }
   }, [setUserInitialData, verifyCreatedTables]);
@@ -38,4 +40,6 @@ export const useInitialize = () => {
   useEffect(() => {
     initialize();
   }, [initialize]);
+
+  return { isInitialized };
 };

@@ -11,9 +11,9 @@ import { UserColumns } from '@app/models/UserModel';
 export const useTablesPopulate = () => {
   const queryExecutor = new QueryManager();
 
-  const createTables = () => {
-    queryExecutor.createTable(TableNames.USER_TABLE, UserColumns);
-    queryExecutor.createTable(TableNames.TASKS_TABLE, TasksColumn);
+  const createTables = async () => {
+    await queryExecutor.createTableAsync(TableNames.USER_TABLE, UserColumns);
+    await queryExecutor.createTableAsync(TableNames.TASKS_TABLE, TasksColumn);
   };
 
   const populateInitialUser = async () => {
@@ -32,7 +32,7 @@ export const useTablesPopulate = () => {
       AsyncStorageKeys.IS_TABLES_CREATED,
     );
     if (!hasTablesCreated) {
-      createTables();
+      await createTables();
       await populateInitialUser();
       await setToStorage(AsyncStorageKeys.IS_TABLES_CREATED, true);
     }

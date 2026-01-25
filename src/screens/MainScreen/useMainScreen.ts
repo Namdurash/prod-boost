@@ -60,8 +60,8 @@ export const useMainScreen = () => {
       const tasksList = rows?._array as unknown as TaskModel[];
       setUserTasks(tasksList);
       console.log('TASKS', rows);
-    } catch {
-      throw new Error('Error retrieving user tasks');
+    } catch (error) {
+      throw new Error(`Error retrieving user tasks ${error}`);
     }
   };
 

@@ -5,7 +5,11 @@ export const WithSplashScreen = ({
 }: {
   children: React.ReactNode;
 }) => {
-  useInitialize();
+  const { isInitialized } = useInitialize();
+
+  if (!isInitialized) {
+    return null;
+  }
 
   return <>{children}</>;
 };
