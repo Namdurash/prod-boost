@@ -15,6 +15,13 @@ export const styles = StyleSheet.create({
     color: COLORS.mintWhite,
     alignSelf: 'center',
   },
+  subtitle: {
+    fontFamily: FONTS.FunnelSans['400'],
+    fontSize: 16,
+    color: COLORS.softAquamarine,
+    alignSelf: 'center',
+    marginBottom: 16,
+  },
   totalTokensContainer: {
     alignItems: 'center',
     marginVertical: 16,

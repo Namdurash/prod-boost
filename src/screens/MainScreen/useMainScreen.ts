@@ -16,15 +16,21 @@ const queryExecutor = new QueryManager();
 export const useMainScreen = () => {
   const [userTasks, setUserTasks] = useState<TaskModel[]>([]);
 
-  const { increaseTotalTokens, decreaseTotalTokens, totalTokens, motivation } =
-    useUserStore(
-      useShallow(state => ({
-        increaseTotalTokens: state.increaseTotalTokens,
-        decreaseTotalTokens: state.decreaseTotalTokens,
-        totalTokens: state.totalTokens,
-        motivation: state.motivation,
-      })),
-    );
+  const {
+    increaseTotalTokens,
+    decreaseTotalTokens,
+    totalTokens,
+    motivation,
+    name,
+  } = useUserStore(
+    useShallow(state => ({
+      increaseTotalTokens: state.increaseTotalTokens,
+      decreaseTotalTokens: state.decreaseTotalTokens,
+      totalTokens: state.totalTokens,
+      motivation: state.motivation,
+      name: state.name,
+    })),
+  );
 
   const { navigate } = useNavigation<MainNavigation>();
 
@@ -85,5 +91,6 @@ export const useMainScreen = () => {
     userTasks,
     totalTokens,
     motivation,
+    name,
   };
 };

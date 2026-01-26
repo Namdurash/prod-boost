@@ -3,6 +3,7 @@ import type { TaskModel } from '@app/models/TasksModel';
 import type { NavigationProp } from '@react-navigation/native';
 
 export type MainStackParamsList = {
+  [PATHS.ONBOARDING_SCREEN]: undefined;
   [PATHS.MAIN_SCREEN]: undefined;
   [PATHS.CREATE_TASK_SCREEN]: undefined;
   [PATHS.EDIT_TASK_SCREEN]: {

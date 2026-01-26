@@ -22,6 +22,8 @@ export const MainScreen = () => {
     changeUserTotalTokens,
     navigateToCreateTaskScreen,
     handleMoveToEnd,
+    name,
+    motivation,
   } = useMainScreen();
 
   useFocusEffect(
@@ -39,7 +41,8 @@ export const MainScreen = () => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Boost your productivity</Text>
+      <Text style={styles.title}>Hello, {name}</Text>
+      <Text style={styles.subtitle}>Motivation: {motivation}</Text>
       <View style={styles.totalTokensContainer}>
         <Icons.Token width={75} height={95} />
         <View style={styles.manageTokensPanel}>
