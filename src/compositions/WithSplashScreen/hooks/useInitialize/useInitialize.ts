@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from 'react';
 import BootSplash from 'react-native-bootsplash';
 
+import { AsyncStorageKeys } from '@app/constants/AsyncStorageKeys';
 import { TableNames } from '@app/constants/TableNames';
 import { useTablesPopulate } from '@app/hooks/useTablesPopulate';
+import { getFromStorage } from '@app/managers/AsyncStorageManager';
 import { queryExecutor } from '@app/managers/QueryManager';
 import { useUserStore } from '@app/stores/UserStore/useUserStore';
 
@@ -12,18 +14,39 @@ export const useInitialize = () => {
   const [isInitialized, setIsInitialized] = useState(false);
   const { verifyCreatedTables } = useTablesPopulate();
   const hydrateUser = useUserStore(state => state.hydrateUser);
+  const setHasCompletedOnboarding = useUserStore(
+    state => state.setHasCompletedOnboarding,
+  );
 
   const setUserInitialData = useCallback(async () => {
     try {
-      const { rows } = await queryExecutor.select<UserModel>({
-        tableName: TableNames.USER_TABLE,
-        valuesToSelect: ['totalTokens', 'name', 'motivation', 'timeSpent'],
-      });
-      hydrateUser(rows?.item(0) as unknown as UserModel);
+      const hasCompletedOnboarding = await getFromStorage(
+        AsyncStorageKeys.HAS_COMPLETED_ONBOARDING,
+      );
+
+      if (hasCompletedOnboarding) {
+        const { rows } = await queryExecutor.select<UserModel>({
+          tableName: TableNames.USER_TABLE,
+          valuesToSelect: ['totalTokens', 'name', 'motivation', 'timeSpent'],
+        });
+
+        console.log('Rows fetched during initialization:', rows);
+
+        const userData = rows?.item(0) as unknown as UserModel;
+
+        if (userData) {
+          hydrateUser(userData);
+          setHasCompletedOnboarding(true);
+        } else {
+          setHasCompletedOnboarding(false);
+        }
+      } else {
+        setHasCompletedOnboarding(false);
+      }
     } catch {
-      throw new Error('Error initializing user data');
+      setHasCompletedOnboarding(false);
     }
-  }, [hydrateUser]);
+  }, [hydrateUser, setHasCompletedOnboarding]);
 
   const initialize = useCallback(async () => {
     try {

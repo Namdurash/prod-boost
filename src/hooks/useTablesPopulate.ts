@@ -16,24 +16,12 @@ export const useTablesPopulate = () => {
     await queryExecutor.createTableAsync(TableNames.TASKS_TABLE, TasksColumn);
   };
 
-  const populateInitialUser = async () => {
-    // TODO: Remove hardcoded values when implementing user onboarding
-    await queryExecutor.insert(TableNames.USER_TABLE, {
-      id: 1,
-      name: 'UserName',
-      motivation: 'Play Video Games',
-      totalTokens: 8,
-      timeSpent: 0,
-    });
-  };
-
   const verifyCreatedTables = async () => {
     const hasTablesCreated = await getFromStorage(
       AsyncStorageKeys.IS_TABLES_CREATED,
     );
     if (!hasTablesCreated) {
       await createTables();
-      await populateInitialUser();
       await setToStorage(AsyncStorageKeys.IS_TABLES_CREATED, true);
     }
   };
